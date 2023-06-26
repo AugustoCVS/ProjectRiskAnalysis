@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+</head>
+<body>
+    <header class="headerHomePage">
+        <h1><a href="./index.html">Tela de Cadastro</a></h1>
+    </header>
+    <form action="" class="formRegister" id="form">
+        <div class="divRegisterInfos">
+            <h2>Dados Pessoais</h2>
+                <input type="text" placeholder="Nome" id="inputName" class="inputRegister">
+                <input type="text" placeholder="Email" id="inputEmail" class="inputRegister">
+                <input type="number" placeholder="idade" id="inputAge" class="inputRegister">
+                <input type="text" placeholder="Estado civil" id="inputCivil" class="inputRegister">
+                <input type="text" placeholder="CPF ou CNPJ" id="inputCpfOuCnpj" class="inputRegister">
+        </div>
+
+        <div class="divRegisterInfos">
+            <h2>Informações financeiras</h2>
+                <input type="text" placeholder="Renda Mensal" id="inputMonthlyIncome" class="inputRegister">
+                <input type="text" placeholder="Limite de crédito" id="inputCreditLimit" class="inputRegister">
+                <input type="text" placeholder="Fontes de renda" id="inputIncomeSources" class="inputRegister">
+                <input type="text" placeholder="Gastos Mensais" id="inputMonthlyExpenses" class="inputRegister">
+                <input type="text" placeholder="Nível de endividamento" id="inputDebtLevel" class="inputRegister">
+                <input type="text" placeholder="Historico de Pagamento" id="inputPaymentHistory" class="inputRegister">
+                <input type="text" placeholder="Histórico de inadimplência" id="inputDefaultHistory" class="inputRegister">
+        </div>
+
+        <div class="divRegisterInfos">
+            <h2>Emprego e estabilidade profissional</h2>
+                <input type="text" placeholder="Profissão" id="inputJob" class="inputRegister">
+                <input type="text" placeholder="Tipo de contrato de trabalho (CLT, autônomo, empresário)" id="inputTypeOfJob" class="inputRegister">
+        </div>
+
+        <div class="divRegisterInfos">
+            <h2>Dados do negócio (caso seja uma empresa)</h2>
+                <input type="text" placeholder="Ramo da atividade" id="inputActivityField" class="inputRegister">
+                <input type="text" placeholder="Tempo de existência" id="inputExistenceTime" class="inputRegister">
+                <input type="text" placeholder="Faturamento Anual" id="inputAnnualIncome" class="inputRegister">
+                <input type="text" placeholder="Resultado financeiro (lucro ou prejuízo)" id="inputResult" class="inputRegister">
+        </div>
+        <div class="divRegisterInfos">
+            <p>Ao clicar em 'Solicitar Análise', confirmo que todas as informações são verídicas</p>
+            <button id="btnInputAnalysis">Solicitar análise</button>
+        </div>
+    </form>
+    <script type="module" src="../js/app.js"></script>
+</body>
+</html>

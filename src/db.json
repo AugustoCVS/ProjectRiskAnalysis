@@ -1,0 +1,143 @@
+{
+  "clientes": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "age": 35,
+      "maritalStatus": "Casado",
+      "cpf": "123.456.789-00",
+      "monthlyIncome": 5000,
+      "creditLimit": 10000,
+      "incomeSources": [
+        "Salário",
+        "Investimentos"
+      ],
+      "monthlyExpenses": 3000,
+      "debtLevel": 0.5,
+      "paymentHistory": "Sem atrasos nos últimos 2 anos",
+      "defaultHistory": "Nenhum registro de inadimplência",
+      "occupation": "Engenheiro",
+      "employmentType": "CLT",
+      "businessArea": "Serviços",
+      "existenceYears": "10 anos",
+      "annualRevenue": 5000000,
+      "financialResult": "Lucro"
+    },
+    {
+      "name": "",
+      "email": "",
+      "age": null,
+      "maritalStatus": "",
+      "cpf": "",
+      "monthlyIncome": null,
+      "creditLimit": null,
+      "incomeSources": [
+        ""
+      ],
+      "monthlyExpenses": null,
+      "debtLevel": null,
+      "paymentHistory": "",
+      "defaultHistory": "",
+      "occupation": "",
+      "employmentType": "",
+      "businessArea": "",
+      "existenceYears": "",
+      "annualRevenue": "",
+      "financialResult": "",
+      "id": 2
+    },
+    {
+      "name": "",
+      "email": "",
+      "age": null,
+      "maritalStatus": "",
+      "cpf": "",
+      "monthlyIncome": null,
+      "creditLimit": null,
+      "incomeSources": [
+        ""
+      ],
+      "monthlyExpenses": null,
+      "debtLevel": null,
+      "paymentHistory": "",
+      "defaultHistory": "",
+      "occupation": "",
+      "employmentType": "",
+      "businessArea": "",
+      "existenceYears": "",
+      "annualRevenue": "",
+      "financialResult": "",
+      "id": 3
+    },
+    {
+      "name": "",
+      "email": "",
+      "age": null,
+      "maritalStatus": "",
+      "cpf": "",
+      "monthlyIncome": null,
+      "creditLimit": null,
+      "incomeSources": [
+        ""
+      ],
+      "monthlyExpenses": null,
+      "debtLevel": null,
+      "paymentHistory": "",
+      "defaultHistory": "",
+      "occupation": "",
+      "employmentType": "",
+      "businessArea": "teste teste",
+      "existenceYears": "",
+      "annualRevenue": "",
+      "financialResult": "",
+      "id": 4
+    },
+    {
+      "name": "teste",
+      "email": "",
+      "age": null,
+      "maritalStatus": "",
+      "cpf": "",
+      "monthlyIncome": null,
+      "creditLimit": null,
+      "incomeSources": [
+        ""
+      ],
+      "monthlyExpenses": null,
+      "debtLevel": null,
+      "paymentHistory": "",
+      "defaultHistory": "",
+      "occupation": "",
+      "employmentType": "",
+      "businessArea": "",
+      "existenceYears": "",
+      "annualRevenue": "",
+      "financialResult": "",
+      "id": 5
+    },
+    {
+      "name": "victor",
+      "email": "",
+      "age": null,
+      "maritalStatus": "",
+      "cpf": "",
+      "monthlyIncome": null,
+      "creditLimit": null,
+      "incomeSources": [
+        ""
+      ],
+      "monthlyExpenses": null,
+      "debtLevel": null,
+      "paymentHistory": "",
+      "defaultHistory": "",
+      "occupation": "",
+      "employmentType": "",
+      "businessArea": "",
+      "existenceYears": "",
+      "annualRevenue": "",
+      "financialResult": "",
+      "id": 6
+    }
+  ]
+}

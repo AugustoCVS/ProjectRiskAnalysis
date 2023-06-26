@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* -------------------------------- HEADER HOME PAGE ---------------------------------- */
+
+.headerHomePage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.navRegister ul li,
+.navRegister ul li a{
+    list-style-type: none;
+    text-decoration: none;
+    color: black
+}
+
+
+/* -------------------------------- CONTENT HOME PAGE ---------------------------------- */
+
+.assessment {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .subtitle{
+    text-align: center;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .level-s {
+    border-left: 4px solid green;
+  }
+  
+  .level-a {
+    border-left: 4px solid yellow;
+  }
+  
+  .level-b {
+    border-left: 4px solid orange;
+  }
+  
+  .level-c {
+    border-left: 4px solid red;
+  }
+  
+  .level-d {
+    border-left: 4px solid black;
+  }
+  
+  strong {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+   
+
+/* -------------------------------- REGISTER PAGE ---------------------------------- */
+
+.formRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem auto;
+    padding: 2rem;
+    gap: 4rem;
+    background-color: rgb(197, 197, 197);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50%;
+  }
+  
+
+.divRegisterInfos{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%
+}
+
+.inputRegister{
+   height: 30px;
+   border: none;
+   border-radius: 5px;
+   padding-left: 10px;
+}
+
+#btnInputAnalysis{
+    width: 150px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: green;
+    color: white
+}
+
+#btnInputAnalysis:hover{
+    background-color: rgb(65, 129, 65);
+}
