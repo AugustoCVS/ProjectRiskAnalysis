@@ -12,41 +12,50 @@
     </header>
     <form action="" class="formRegister" id="form">
         <div class="divRegisterInfos">
-            <h2>Dados Pessoais</h2>
-                <input type="text" placeholder="Nome" id="inputName" class="inputRegister">
-                <input type="text" placeholder="Email" id="inputEmail" class="inputRegister">
-                <input type="number" placeholder="idade" id="inputAge" class="inputRegister">
-                <input type="text" placeholder="Estado civil" id="inputCivil" class="inputRegister">
-                <input type="text" placeholder="CPF ou CNPJ" id="inputCpfOuCnpj" class="inputRegister">
-        </div>
+            <h2>Cadastro para análise de risco CNPJ</h2>
 
-        <div class="divRegisterInfos">
-            <h2>Informações financeiras</h2>
-                <input type="text" placeholder="Renda Mensal" id="inputMonthlyIncome" class="inputRegister">
-                <input type="text" placeholder="Limite de crédito" id="inputCreditLimit" class="inputRegister">
-                <input type="text" placeholder="Fontes de renda" id="inputIncomeSources" class="inputRegister">
-                <input type="text" placeholder="Gastos Mensais" id="inputMonthlyExpenses" class="inputRegister">
-                <input type="text" placeholder="Nível de endividamento" id="inputDebtLevel" class="inputRegister">
-                <input type="text" placeholder="Historico de Pagamento" id="inputPaymentHistory" class="inputRegister">
-                <input type="text" placeholder="Histórico de inadimplência" id="inputDefaultHistory" class="inputRegister">
-        </div>
+            <label for="cnpj">Insira seu CNPJ para identificação: </label>
+            <input type="text" placeholder="CNPJ" id="cnpj" class="inputRegister">
 
-        <div class="divRegisterInfos">
-            <h2>Emprego e estabilidade profissional</h2>
-                <input type="text" placeholder="Profissão" id="inputJob" class="inputRegister">
-                <input type="text" placeholder="Tipo de contrato de trabalho (CLT, autônomo, empresário)" id="inputTypeOfJob" class="inputRegister">
-        </div>
+            <p> Possui processos criminais ?</p>
+            <div class="divCheckBox">
+                <label for="inputCriminalCharges">Sim</label>
+                <input type="checkbox" id="inputCriminalModelYes" class="inputRegister">
+                <label for="inputCriminalCharges">Não</label>
+                <input type="checkbox" id="inputCriminalModelNo" class="inputRegister">
+            </div>
 
-        <div class="divRegisterInfos">
-            <h2>Dados do negócio (caso seja uma empresa)</h2>
-                <input type="text" placeholder="Ramo da atividade" id="inputActivityField" class="inputRegister">
-                <input type="text" placeholder="Tempo de existência" id="inputExistenceTime" class="inputRegister">
-                <input type="text" placeholder="Faturamento Anual" id="inputAnnualIncome" class="inputRegister">
-                <input type="text" placeholder="Resultado financeiro (lucro ou prejuízo)" id="inputResult" class="inputRegister">
+            <label for="inputDebtLevel">Esse nivel é medido com base no seu faturamento anual, quantos % dele são dívidas.</label>
+            <input type="text" placeholder="Nivel de endividamento" id="inputDebtLevel" class="inputRegister">
+
+            <p> Possui bens ou serviços que não foram pagos até o limite da data estipulada ?</p>
+            <div class="divCheckBox">
+                <label for="inputDefaultHistoryYes">Sim</label>
+                <input type="checkbox" id="inputDefaultHistoryYes" class="inputRegister">
+                <label for="inputDefaultHistoryNo">Não</label>
+                <input type="checkbox" id="inputDefaultHistoryNo" class="inputRegister">
+            </div>
+
+            <label for="inputSerasaScore">Qual o seu Score do Serasa ?</label>
+            <input type="number" placeholder="Score do serasa" id="inputSerasaScore" class="inputRegister">
+
+            <label for="inputSerasaScore">Tempo de existência (em anos)</label>
+            <input type="number" placeholder="Tempo de existência" id="inputExistenceTime" class="inputRegister">
+
+            <label for="inputAnnualBilling">Faturamento Anual</label>
+            <input type="number" placeholder="Faturamento anual" id="inputAnnualBilling" class="inputRegister">
+
+            <p> Resultado financeiro da empresa: </p>
+            <div class="divCheckBox">
+                <label for="inputFinancialResultProfit">Lucro</label>
+                <input type="checkbox" id="inputFinancialResultProfit" class="inputRegister">
+                <label for="inputFinancialResultLoss">Prejuizo</label>
+                <input type="checkbox" id="inputFinancialResultLoss" class="inputRegister">
+            </div>
         </div>
         <div class="divRegisterInfos">
             <p>Ao clicar em 'Solicitar Análise', confirmo que todas as informações são verídicas</p>
-            <button id="btnInputAnalysis">Solicitar análise</button>
+            <button id="btnInputAnalysis">Cadastrar informações</button>
         </div>
     </form>
     <script type="module" src="../js/app.js"></script>
