@@ -13,59 +13,63 @@ window.addEventListener("load", () => {
 
   const form = document.getElementById("form") as HTMLFormElement;
 
-  async function checkIfCnpjAlreadyExistis(): Promise<boolean>{
+  async function checkIfCnpjAlreadyExists(): Promise<boolean> {
     return await fetch("http://localhost:3000/clientes")
-            .then(response => response.json())
-            .then((clientList) => {
-              const clientCnpj = cnpj.value
-              for(let i in clientList){
-                if(clientCnpj === clientList[i].cnpj){
-                  return true
-                }
-              }
-              return false
-            });
-  };
+      .then(response => response.json())
+      .then((clientList) => {
+        const clientCnpj = cnpj.value;
+        for (const client of clientList) {
+          if (clientCnpj === client.cnpj) {
+            return true;
+          }
+        }
+        return false;
+      });
+  }
 
-
-  async function confirmUserUpdate(){
-
-    if(await checkIfCnpjAlreadyExistis()){
-      return window.confirm("Ja existem dados atrelados a este CNPJ no nosso sitema, gostaria de atualizá-los ?")
+  async function confirmUserUpdate(): Promise<boolean> {
+    if (await checkIfCnpjAlreadyExists()) {
+      return window.confirm("Já existem dados atrelados a este CNPJ no nosso sistema, gostaria de atualizá-los?");
     }
-    return false
+    return false;
+  }
+
+  async function getUserIdByCnpj(cnpj: string): Promise<string | null> {
+    return await fetch("http://localhost:3000/clientes")
+      .then(response => response.json())
+      .then((clientList) => {
+        for (const client of clientList) {
+          if (cnpj === client.cnpj) {
+            return client.id;
+          }
+        }
+        return null;
+      });
   }
 
   async function updateUserData(userData: UserData) {
-    const confirmation = await confirmUserUpdate();
-    if (confirmation) {
-      fetch(`http://localhost:3000/clientes/${userData.cnpj}`, {
+    const userId = await getUserIdByCnpj(userData.cnpj);
+    if (userId) {
+      const response = await fetch(`http://localhost:3000/clientes/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),
-      })
-        .then((response) => {
-          if (response.ok) {
-            alert("Dados atualizados com sucesso");
-          } else {
-            alert("Erro ao atualizar os dados");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          alert("Erro ao atualizar os dados");
-        });
+      });
+      if (response.ok) {
+        alert("Dados atualizados com sucesso");
+      } else {
+        alert("Erro ao atualizar os dados");
+      }
+    } else {
+      alert("Usuário não encontrado");
     }
   }
 
   async function exportUserDataToApi() {
-
-    const cnpjValue = cnpj.value.replace(/[^\d]+/g, '');
-
     const userData: UserData = {
-      cnpj: cnpjValue,
+      cnpj: cnpj.value,
       hasCriminalProcesses: inputCriminalModelYes.checked,
       debtLevel: parseInt(inputDebtLevel.value),
       hasUnpaidItems: inputDefaultHistoryYes.checked,
@@ -75,16 +79,16 @@ window.addEventListener("load", () => {
       financialResult: inputFinancialResultProfit.checked ? "Lucro" : "Prejuizo",
     };
 
-    if(await confirmUserUpdate()){
-      updateUserData(userData)
-    }else{
-        fetch("http://localhost:3000/clientes", {
+    if (await confirmUserUpdate()) {
+      updateUserData(userData);
+    } else {
+      fetch("http://localhost:3000/clientes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),
-        })
+      })
         .then((response) => {
           if (response.ok) {
             alert("Dados enviados com sucesso");

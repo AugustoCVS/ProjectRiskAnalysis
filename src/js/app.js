@@ -18,14 +18,14 @@ window.addEventListener("load", () => {
     const inputFinancialResultProfit = document.getElementById('inputFinancialResultProfit');
     const inputFinancialResultLoss = document.getElementById('inputFinancialResultLoss');
     const form = document.getElementById("form");
-    function checkIfCnpjAlreadyExistis() {
+    function checkIfCnpjAlreadyExists() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield fetch("http://localhost:3000/clientes")
                 .then(response => response.json())
                 .then((clientList) => {
                 const clientCnpj = cnpj.value;
-                for (let i in clientList) {
-                    if (clientCnpj === clientList[i].cnpj) {
+                for (const client of clientList) {
+                    if (clientCnpj === client.cnpj) {
                         return true;
                     }
                 }
@@ -33,46 +33,55 @@ window.addEventListener("load", () => {
             });
         });
     }
-    ;
     function confirmUserUpdate() {
         return __awaiter(this, void 0, void 0, function* () {
-            if (yield checkIfCnpjAlreadyExistis()) {
-                return window.confirm("Ja existem dados atrelados a este CNPJ no nosso sitema, gostaria de atualizá-los ?");
+            if (yield checkIfCnpjAlreadyExists()) {
+                return window.confirm("Já existem dados atrelados a este CNPJ no nosso sistema, gostaria de atualizá-los?");
             }
             return false;
         });
     }
+    function getUserIdByCnpj(cnpj) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield fetch("http://localhost:3000/clientes")
+                .then(response => response.json())
+                .then((clientList) => {
+                for (const client of clientList) {
+                    if (cnpj === client.cnpj) {
+                        return client.id;
+                    }
+                }
+                return null;
+            });
+        });
+    }
     function updateUserData(userData) {
         return __awaiter(this, void 0, void 0, function* () {
-            const confirmation = yield confirmUserUpdate();
-            if (confirmation) {
-                fetch(`http://localhost:3000/clientes/${userData.cnpj}`, {
+            const userId = yield getUserIdByCnpj(userData.cnpj);
+            if (userId) {
+                const response = yield fetch(`http://localhost:3000/clientes/${userId}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(userData),
-                })
-                    .then((response) => {
-                    if (response.ok) {
-                        alert("Dados atualizados com sucesso");
-                    }
-                    else {
-                        alert("Erro ao atualizar os dados");
-                    }
-                })
-                    .catch((err) => {
-                    console.log(err);
-                    alert("Erro ao atualizar os dados");
                 });
+                if (response.ok) {
+                    alert("Dados atualizados com sucesso");
+                }
+                else {
+                    alert("Erro ao atualizar os dados");
+                }
+            }
+            else {
+                alert("Usuário não encontrado");
             }
         });
     }
     function exportUserDataToApi() {
         return __awaiter(this, void 0, void 0, function* () {
-            const cnpjValue = cnpj.value.replace(/[^\d]+/g, '');
             const userData = {
-                cnpj: cnpjValue,
+                cnpj: cnpj.value,
                 hasCriminalProcesses: inputCriminalModelYes.checked,
                 debtLevel: parseInt(inputDebtLevel.value),
                 hasUnpaidItems: inputDefaultHistoryYes.checked,

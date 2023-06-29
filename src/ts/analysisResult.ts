@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
           result += 5;
         } else if (client.debtLevel <= 5 && client.debtLevel >= 1) {
           result += 15;
-        } else if (client.debtLevel === 5) {
+        } else if (client.debtLevel < 5) {
           result += 20;
         }
         return;
@@ -172,6 +172,17 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  function fullyFit(){
+    divAnalysisResult.innerHTML = `
+    <li class="result level-s">
+        <strong>S: Totalmente Apto</strong>
+        <p>
+        Os clientes classificados como S atendem a todos os critérios de avaliação e possuem uma pontuação alta o suficiente para serem considerados totalmente aptos para operar no adiantamento de recebíveis. São clientes de baixo risco e alta elegibilidade.
+        </p>
+    </li>
+    `;
+  }
+
   formGetAnalysis.addEventListener('submit', async (event) => {
     event.preventDefault();
     const cnpjValue = userCnpj.value.replace(/[^\d]+/g, '');
@@ -187,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    result = 50;
     await criminalAnalysis(cnpjValue);
     await debtLevelAnalysis(cnpjValue);
     await defaultHistoryAnalysis(cnpjValue);
@@ -196,14 +206,16 @@ document.addEventListener('DOMContentLoaded', () => {
     await annualBillingAnalysis(cnpjValue);
     await financialResultAnalysis(cnpjValue);
 
-    if (result <= 30) {
+    if (result <= 20) {
       unfitToOperate();
-    } else if (result > 30 && result <= 50) {
+    } else if (result > 20 && result <= 40) {
       lowTrust();
-    } else if (result > 50 && result <= 70) {
+    } else if (result > 40 && result <= 60) {
       averageTrust();
-    } else if (result > 70) {
+    } else if (result > 60 && result <=80) {
       highTrust();
+    }else if(result > 80 && result <= 100){
+        fullyFit();
     }
   });
 });

@@ -56,12 +56,12 @@
     },
     {
       "cnpj": "12345678912345",
-      "hasCriminalProcesses": false,
-      "debtLevel": "8",
+      "hasCriminalProcesses": true,
+      "debtLevel": 0,
       "hasUnpaidItems": false,
-      "serasaScore": 800,
-      "existenceTime": 3,
-      "annualBilling": 8000000,
+      "serasaScore": 1000,
+      "existenceTime": 67,
+      "annualBilling": 12000000000000000,
       "financialResult": "Lucro",
       "id": 6
     },
@@ -123,12 +123,12 @@
     {
       "cnpj": "67622110000166",
       "hasCriminalProcesses": true,
-      "debtLevel": 0,
-      "hasUnpaidItems": false,
-      "serasaScore": 900,
-      "existenceTime": 20,
-      "annualBilling": 120000000,
-      "financialResult": "Lucro",
+      "debtLevel": 123,
+      "hasUnpaidItems": true,
+      "serasaScore": 142,
+      "existenceTime": 3,
+      "annualBilling": 12312,
+      "financialResult": "Prejuizo",
       "id": 12
     },
     {
@@ -145,11 +145,11 @@
     {
       "cnpj": "65952206000167",
       "hasCriminalProcesses": false,
-      "debtLevel": 1,
+      "debtLevel": 3,
       "hasUnpaidItems": true,
-      "serasaScore": 123,
-      "existenceTime": 12,
-      "annualBilling": 1231231231,
+      "serasaScore": 321,
+      "existenceTime": 32,
+      "annualBilling": 321321321,
       "financialResult": "Lucro",
       "id": 14
     }
