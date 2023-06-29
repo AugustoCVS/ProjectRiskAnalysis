@@ -1,7 +1,7 @@
 export interface UserData {
   cnpj: string
   hasCriminalProcesses: boolean;
-  debtLevel: string;
+  debtLevel: number;
   hasUnpaidItems: boolean;
   serasaScore: number;
   existenceTime: number;

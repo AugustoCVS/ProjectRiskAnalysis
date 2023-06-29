@@ -1,3 +1,12 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 window.addEventListener("load", () => {
     const cnpj = document.getElementById("cnpj");
     const inputCriminalModelYes = document.getElementById('inputCriminalModelYes');
@@ -9,41 +18,129 @@ window.addEventListener("load", () => {
     const inputFinancialResultProfit = document.getElementById('inputFinancialResultProfit');
     const inputFinancialResultLoss = document.getElementById('inputFinancialResultLoss');
     const form = document.getElementById("form");
-    function exportUserDataToApi() {
-        const userData = {
-            cnpj: cnpj.value,
-            hasCriminalProcesses: inputCriminalModelYes.checked,
-            debtLevel: inputDebtLevel.value,
-            hasUnpaidItems: inputDefaultHistoryYes.checked,
-            serasaScore: parseInt(inputSerasaScore.value),
-            existenceTime: parseInt(inputExistenceTime.value),
-            annualBilling: parseInt(inputAnnualBilling.value),
-            financialResult: inputFinancialResultProfit.checked ? "Lucro" : "Prejuizo",
-        };
-        fetch("http://localhost:3000/clientes", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-        })
-            .then((response) => {
-            if (response.ok) {
-                alert("Dados enviados com sucesso");
-            }
-            else {
-                alert("Erro ao enviar os dados");
-            }
-        })
-            .catch((err) => {
-            console.log(err);
-            alert("Erro ao enviar os dados");
+    function checkIfCnpjAlreadyExistis() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield fetch("http://localhost:3000/clientes")
+                .then(response => response.json())
+                .then((clientList) => {
+                const clientCnpj = cnpj.value;
+                for (let i in clientList) {
+                    if (clientCnpj === clientList[i].cnpj) {
+                        return true;
+                    }
+                }
+                return false;
+            });
         });
     }
     ;
+    function confirmUserUpdate() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (yield checkIfCnpjAlreadyExistis()) {
+                return window.confirm("Ja existem dados atrelados a este CNPJ no nosso sitema, gostaria de atualizá-los ?");
+            }
+            return false;
+        });
+    }
+    function updateUserData(userData) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const confirmation = yield confirmUserUpdate();
+            if (confirmation) {
+                fetch(`http://localhost:3000/clientes/${userData.cnpj}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userData),
+                })
+                    .then((response) => {
+                    if (response.ok) {
+                        alert("Dados atualizados com sucesso");
+                    }
+                    else {
+                        alert("Erro ao atualizar os dados");
+                    }
+                })
+                    .catch((err) => {
+                    console.log(err);
+                    alert("Erro ao atualizar os dados");
+                });
+            }
+        });
+    }
+    function exportUserDataToApi() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const cnpjValue = cnpj.value.replace(/[^\d]+/g, '');
+            const userData = {
+                cnpj: cnpjValue,
+                hasCriminalProcesses: inputCriminalModelYes.checked,
+                debtLevel: parseInt(inputDebtLevel.value),
+                hasUnpaidItems: inputDefaultHistoryYes.checked,
+                serasaScore: parseInt(inputSerasaScore.value),
+                existenceTime: parseInt(inputExistenceTime.value),
+                annualBilling: parseInt(inputAnnualBilling.value),
+                financialResult: inputFinancialResultProfit.checked ? "Lucro" : "Prejuizo",
+            };
+            if (yield confirmUserUpdate()) {
+                updateUserData(userData);
+            }
+            else {
+                fetch("http://localhost:3000/clientes", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userData),
+                })
+                    .then((response) => {
+                    if (response.ok) {
+                        alert("Dados enviados com sucesso");
+                    }
+                    else {
+                        alert("Erro ao enviar os dados");
+                    }
+                })
+                    .catch((err) => {
+                    console.log(err);
+                    alert("Erro ao enviar os dados");
+                });
+            }
+        });
+    }
+    function validateCnpj(cnpj) {
+        return cnpj.length === 14;
+    }
+    function validateDebtLevel(debtLevel) {
+        const debtLevelNumber = parseInt(debtLevel);
+        return !isNaN(debtLevelNumber) && debtLevelNumber >= 0;
+    }
+    function validateSerasaScore(serasaScore) {
+        const serasaScoreNumber = parseInt(serasaScore);
+        return !isNaN(serasaScoreNumber) && serasaScoreNumber >= 0 && serasaScoreNumber <= 1000;
+    }
+    function validateForm() {
+        const cnpjValue = cnpj.value.replace(/[^\d]+/g, '');
+        if (!validateCnpj(cnpjValue)) {
+            alert("CNPJ inválido");
+            return false;
+        }
+        const debtLevelValue = inputDebtLevel.value.trim();
+        if (!validateDebtLevel(debtLevelValue)) {
+            alert("Nível de dívida inválido");
+            return false;
+        }
+        const serasaScoreValue = inputSerasaScore.value.trim();
+        if (!validateSerasaScore(serasaScoreValue)) {
+            alert("Score do Serasa inválido");
+            return false;
+        }
+        return true;
+    }
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        exportUserDataToApi();
+        if (validateForm()) {
+            exportUserDataToApi();
+        }
     });
 });
 export {};
