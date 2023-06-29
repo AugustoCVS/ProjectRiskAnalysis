@@ -53,6 +53,50 @@
       "annualBilling": 8000000,
       "financialResult": "Lucro",
       "id": 5
+    },
+    {
+      "cnpj": "12345678912345",
+      "hasCriminalProcesses": false,
+      "debtLevel": "8",
+      "hasUnpaidItems": false,
+      "serasaScore": 800,
+      "existenceTime": 3,
+      "annualBilling": 8000000,
+      "financialResult": "Lucro",
+      "id": 6
+    },
+    {
+      "cnpj": "09876543212345",
+      "hasCriminalProcesses": false,
+      "debtLevel": "9",
+      "hasUnpaidItems": false,
+      "serasaScore": 900,
+      "existenceTime": 10,
+      "annualBilling": 12000000,
+      "financialResult": "Lucro",
+      "id": 7
+    },
+    {
+      "cnpj": "09876543210987",
+      "hasCriminalProcesses": true,
+      "debtLevel": "90",
+      "hasUnpaidItems": true,
+      "serasaScore": 100,
+      "existenceTime": 1,
+      "annualBilling": 100,
+      "financialResult": "Prejuizo",
+      "id": 8
+    },
+    {
+      "cnpj": "",
+      "hasCriminalProcesses": false,
+      "debtLevel": "",
+      "hasUnpaidItems": false,
+      "serasaScore": null,
+      "existenceTime": null,
+      "annualBilling": null,
+      "financialResult": "Prejuizo",
+      "id": 9
     }
   ]
 }
