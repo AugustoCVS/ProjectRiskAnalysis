@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+</head>
+<body>
+    <header class="headerHomePage">
+        <h1>Análise de crédito</h1>
+        <a href="./analise.html">Cadastro de informações</a>
+    </header>
+    <div class="assessment">
+        <h2 class="subtitle">Avaliação de Risco de Crédito</h2>
+        <p>
+          A avaliação de risco de crédito é um processo que determina se um cliente é elegível para realizar o adiantamento de recebíveis.
+        </p>
+        <h3 class="subtitle">Níveis:</h3>
+        <ul>
+          <li class="level-s">
+            <strong>S: Totalmente Apto</strong>
+            <p>
+              Os clientes classificados como S atendem a todos os critérios de avaliação e possuem uma pontuação alta o suficiente para serem considerados totalmente aptos para operar no adiantamento de recebíveis. São clientes de baixo risco e alta elegibilidade.
+            </p>
+          </li>
+          <li class="level-a">
+            <strong>A: Alto</strong>
+            <p>
+              Os clientes classificados como A atendem a maioria dos critérios de avaliação e possuem uma pontuação significativa. Apesar de não alcançarem o nível máximo de elegibilidade, eles ainda são considerados clientes de alto potencial para o adiantamento de recebíveis.
+            </p>
+          </li>
+          <li class="level-b">
+            <strong>B: Médio</strong>
+            <p>
+              Os clientes classificados como B atendem a alguns critérios de avaliação, porém possuem uma pontuação intermediária. Embora tenham potencial para o adiantamento de recebíveis, podem apresentar um risco moderado que requer maior análise e consideração.
+            </p>
+          </li>
+          <li class="level-c">
+            <strong>C: Baixo</strong>
+            <p>
+              Os clientes classificados como C não atendem a uma quantidade significativa de critérios de avaliação ou possuem uma pontuação baixa. Apresentam um risco maior e podem ter restrições para operar no adiantamento de recebíveis.
+            </p>
+          </li>
+          <li class="level-d">
+            <strong>D: Inapto para operar</strong>
+            <p>
+              Os clientes classificados como D não atendem a maioria dos critérios de avaliação ou possuem uma pontuação muito baixa. São considerados inaptos para operar no adiantamento de recebíveis devido a um risco elevado ou falta de elegibilidade.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <form action="" class="formRegister" id="formGetAnalysis">
+        <label for="userCnpj">Insira seu CNPJ para solicitar sua análise: </label>
+        <input type="text" placeholder="CNPJ" id="userCnpj" class="inputRegister">
+        <button id="btnInputAnalysis">Solicitar análise</button>
+      </form>
+      <div class="assessment">
+        <div id="divAnalysisResult">
+        </div>
+      </div>
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" src="../js//analysisResult.js"></script>
+</body>
+</html>

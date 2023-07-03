@@ -1,0 +1,47 @@
+{
+  "clientes": [
+    {
+      "id": 1,
+      "hasCriminalProcess": true,
+      "debtLevel": "10%",
+      "hasUnpaidItems": true,
+      "serasaScore": 345,
+      "existenceTime": 2,
+      "annualBilling": 300000,
+      "financialResult": "Lucro"
+    },
+    {
+      "cnpj": "teste",
+      "hasCriminalProcesses": true,
+      "debtLevel": "",
+      "hasUnpaidItems": true,
+      "serasaScore": 123,
+      "existenceTime": 2,
+      "annualBilling": 123,
+      "financialResult": "Prejuizo",
+      "id": 2
+    },
+    {
+      "cnpj": "12345678909876",
+      "hasCriminalProcesses": false,
+      "debtLevel": 7,
+      "hasUnpaidItems": false,
+      "serasaScore": 689,
+      "existenceTime": 10,
+      "annualBilling": 12000000,
+      "financialResult": "Lucro",
+      "id": 3
+    },
+    {
+      "cnpj": "12345678912345",
+      "hasCriminalProcesses": false,
+      "debtLevel": 0,
+      "hasUnpaidItems": false,
+      "serasaScore": 1000,
+      "existenceTime": 56,
+      "annualBilling": 12000000000,
+      "financialResult": "Lucro",
+      "id": 4
+    }
+  ]
+}

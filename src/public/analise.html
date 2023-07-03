@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+</head>
+<body>
+    <header class="headerHomePage">
+        <h1><a href="./index.html">Tela de Cadastro</a></h1>
+    </header>
+    <form action="" class="formRegister" id="form">
+        <div class="divRegisterInfos">
+            <h2>Cadastro para análise de risco CNPJ</h2>
+
+            <label for="cnpj">Insira seu CNPJ para identificação(somente os numeros): </label>
+            <input type="text" placeholder="CNPJ" id="cnpj" class="inputRegister">
+
+            <p> Possui processos criminais ?</p>
+            <div class="divCheckBox">
+                <label for="inputCriminalCharges">Sim</label>
+                <input type="checkbox" id="inputCriminalModelYes" class="inputRegister">
+                <label for="inputCriminalCharges">Não</label>
+                <input type="checkbox" id="inputCriminalModelNo" class="inputRegister">
+            </div>
+
+            <label for="inputDebtLevel">Esse nivel é medido com base no seu faturamento anual, quantos % dele são dívidas.</label>
+            <input type="number" placeholder="Nivel de endividamento" id="inputDebtLevel" class="inputRegister">
+
+            <p> Possui bens ou serviços que não foram pagos até o limite da data estipulada ?</p>
+            <div class="divCheckBox">
+                <label for="inputDefaultHistoryYes">Sim</label>
+                <input type="checkbox" id="inputDefaultHistoryYes" class="inputRegister">
+                <label for="inputDefaultHistoryNo">Não</label>
+                <input type="checkbox" id="inputDefaultHistoryNo" class="inputRegister">
+            </div>
+
+            <label for="inputSerasaScore">Qual o seu Score do Serasa ?</label>
+            <input type="number" placeholder="Score do serasa" id="inputSerasaScore" class="inputRegister">
+
+            <label for="inputSerasaScore">Tempo de existência (em anos)</label>
+            <input type="number" placeholder="Tempo de existência" id="inputExistenceTime" class="inputRegister">
+
+            <label for="inputAnnualBilling">Faturamento Anual</label>
+            <input type="number" placeholder="Faturamento anual" id="inputAnnualBilling" class="inputRegister">
+
+            <p> Resultado financeiro da empresa: </p>
+            <div class="divCheckBox">
+                <label for="inputFinancialResultProfit">Lucro</label>
+                <input type="checkbox" id="inputFinancialResultProfit" class="inputRegister">
+                <label for="inputFinancialResultLoss">Prejuizo</label>
+                <input type="checkbox" id="inputFinancialResultLoss" class="inputRegister">
+            </div>
+        </div>
+        <div class="divRegisterInfos">
+            <p>Ao clicar em 'Solicitar Análise', confirmo que todas as informações são verídicas</p>
+            <button id="btnInputAnalysis">Cadastrar informações</button>
+        </div>
+    </form>
+    <script type="module" src="../js/app.js"></script>
+</body>
+</html>
