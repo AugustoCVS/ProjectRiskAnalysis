@@ -183,6 +183,30 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  function setResult(){
+    if (result <= 20) {
+      unfitToOperate();
+    } else if (result > 20 && result <= 40) {
+      lowTrust();
+    } else if (result > 40 && result <= 60) {
+      averageTrust();
+    } else if (result > 60 && result <=80) {
+      highTrust();
+    }else if(result > 80 && result <= 100){
+        fullyFit();
+    }
+  }
+
+  async function executeAnalysisResultToUser(cnpjValue: string): Promise<void>{
+    await criminalAnalysis(cnpjValue);
+    await debtLevelAnalysis(cnpjValue);
+    await defaultHistoryAnalysis(cnpjValue);
+    await scoreSerasaAnalysis(cnpjValue);
+    await existenceTimeAnalysis(cnpjValue);
+    await annualBillingAnalysis(cnpjValue);
+    await financialResultAnalysis(cnpjValue);
+  }
+
   formGetAnalysis.addEventListener('submit', async (event) => {
     event.preventDefault();
     const cnpjValue = userCnpj.value.replace(/[^\d]+/g, '');
@@ -198,24 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    await criminalAnalysis(cnpjValue);
-    await debtLevelAnalysis(cnpjValue);
-    await defaultHistoryAnalysis(cnpjValue);
-    await scoreSerasaAnalysis(cnpjValue);
-    await existenceTimeAnalysis(cnpjValue);
-    await annualBillingAnalysis(cnpjValue);
-    await financialResultAnalysis(cnpjValue);
-
-    if (result <= 20) {
-      unfitToOperate();
-    } else if (result > 20 && result <= 40) {
-      lowTrust();
-    } else if (result > 40 && result <= 60) {
-      averageTrust();
-    } else if (result > 60 && result <=80) {
-      highTrust();
-    }else if(result > 80 && result <= 100){
-        fullyFit();
-    }
+    await executeAnalysisResultToUser(cnpjValue)
+    setResult()
+    
   });
 });

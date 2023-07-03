@@ -68,8 +68,11 @@ window.addEventListener("load", () => {
   }
 
   async function exportUserDataToApi() {
+
+    const cnpjValue = cnpj.value.replace(/[^\d]+/g, '');
+
     const userData: UserData = {
-      cnpj: cnpj.value,
+      cnpj: cnpjValue,
       hasCriminalProcesses: inputCriminalModelYes.checked,
       debtLevel: parseInt(inputDebtLevel.value),
       hasUnpaidItems: inputDefaultHistoryYes.checked,
